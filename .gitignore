@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b580013 (First Push)
 # Prerequisites
 *.d
 
@@ -53,3 +57,27 @@ dkms.conf
 
 # debug information files
 *.dwo
+<<<<<<< HEAD
+=======
+=======
+# vscode
+.vscode/
+*.code-workspace
+
+# trae
+.trae/
+
+# project out
+build/
+DebugConfig/
+
+# Keil
+*.uvprojx
+*.uvoptx
+*.scvd
+
+# eide
+.eide/
+
+>>>>>>> 9e66ae8 (First Push)
+>>>>>>> b580013 (First Push)
