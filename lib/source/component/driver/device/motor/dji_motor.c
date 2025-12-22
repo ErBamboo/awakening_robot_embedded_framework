@@ -14,6 +14,7 @@ static void dji_motor_update(DJIMotor_t motor, uint8_t* buf)
     motor->measurement.current = ((buf[4] << 8) & 0xFF00) | (buf[5] & 0x00FF);
     motor->measurement.temperature = buf[6];
     motor->errCode = buf[7];
+    
 }
 
 /**
