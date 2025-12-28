@@ -5,7 +5,7 @@
  */
 
 #include "bsp_serial.h"
-#include "aw_core/awlf_cpu.h"
+#include "aw_cpu.h"
 /******************************************* SERIAL INTERFACE IMPLEMENTATION *************************************************/
 static AwlfRet_e bsp_serial_configure(HalSerial_t serial, SerialCfg_t cfg)
 {

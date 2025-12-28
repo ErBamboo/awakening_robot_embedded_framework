@@ -5,7 +5,7 @@
 #include "bsp_can.h"
 #include "bsp_serial.h"
 
-#include "aw_core/awlf_cpu.h"
+#include "aw_cpu.h"
 #include "stm32f4xx_hal.h"
 
 extern uint32_t SystemCoreClock;

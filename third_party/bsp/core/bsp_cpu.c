@@ -1,6 +1,6 @@
 
 #include "bsp.h"
-#include "aw_core/awlf_interrupt.h"
+#include "aw_interrupt.h"
 
 /**
  * @brief  This function is executed in case of error occurrence.
@@ -67,14 +67,14 @@ static AwlfBoardInterface_s AwlfBoardInterface = {
     .delay_ms             = DWT_Delay,
 };
 
-void awlf_bsp_init(void)
+void aw_bsp_init(void)
 {
     // 开发板初始化，对于STM32来说，在CubeMX上配置时钟树，然后直接复制过来用就好
     HAL_Init();
     SystemClock_Config();
     NVIC_SetPriorityGrouping(NVIC_PRIORITYGROUP_4); // 任务调度前，需要设置中断优先级分组
     // cpu注册
-    awlf_cpu_register(__AWLF_CPU_FREQ_MHZ, &AwlfBoardInterface);
+    aw_cpu_register(__AWLF_CPU_FREQ_MHZ, &AwlfBoardInterface);
     // 外设注册、初始化
     DWT_Init(__AWLF_CPU_FREQ_MHZ);
     bsp_serial_register();
