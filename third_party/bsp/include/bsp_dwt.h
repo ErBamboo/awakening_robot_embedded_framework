@@ -3,7 +3,7 @@
  * @file	bsp_dwt.h
  * @author  Wang Hongxi
  * @author  modified by NeoZng 2022/3/8
- * @author  modified by Yuhao  2025/12/1
+ * @modifier:  Yuhao  2025/12/1
  * @date    2025/12/1
  * @brief
  ******************************************************************************

@@ -6,7 +6,7 @@ extern "C"
 {
 #endif
 
-#include "component/driver/pal/pal_can_dev.h"
+#include "device/peripheral/pal_can_dev.h"
 #include "stm32f4xx_hal.h"
 
 #define USE_CAN1

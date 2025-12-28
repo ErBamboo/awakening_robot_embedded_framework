@@ -1,5 +1,5 @@
-#include "component/driver/pal/pal_dev.h"
-#include "aw_core/awlf_cpu.h"
+#include "pal/pal_dev.h"
+#include "aw_cpu.h"
 #include "FreeRTOS.h" // TODO: 引入posix兼容层
 #include "task.h"
 
@@ -11,14 +11,14 @@ typedef struct CanInfo
 {
     CanUserMsg_s msg[CAN_MSG_BUF_LEN];
     uint8_t data[CAN_MSG_BUF_LEN][8];
-} __awlf_packed CanInfo_s;
+} __aw_packed CanInfo_s;
 
 typedef struct CanTxInfo* CanTxInfo_t;
 typedef struct CanTxInfo
 {
     CanUserMsg_s msg[CAN_TX_MSG_BUF_LEN];
     uint8_t data[CAN_TX_MSG_BUF_LEN][8];
-} __awlf_packed CanTxInfo_s;
+} __aw_packed CanTxInfo_s;
 
 static void can_info_init(CanUserMsg_t msg, uint32_t bank, uint8_t* data)
 {
@@ -91,7 +91,7 @@ int main(void)
     while (result1 != pdTRUE)
     {
     }
-    awlf_cpu_init();
+    aw_cpu_init();
 
     vTaskStartScheduler();
     // 调度成功后不会跑到这里

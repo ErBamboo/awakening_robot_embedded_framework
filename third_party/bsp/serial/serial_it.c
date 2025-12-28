@@ -4,8 +4,8 @@
  * @details 该模块负责处理串口的中断事件，包括接收数据、发送完成等。
  */
 #include "bsp_serial.h"
-#include "aw_core/awlf_cpu.h"
-#include "aw_core/awlf_interrupt.h"
+#include "aw_cpu.h"
+#include "aw_interrupt.h"
 // 参数Memory为需要处理的DMA缓冲区
 static void _bsp_serial_dmarx_deal(bsp_serial_t bsp_serial, HAL_DMA_MemoryTypeDef Memory)
 {
@@ -144,10 +144,10 @@ void bsp_serial_dma_cfg(bsp_serial_t bsp_serial, uint32_t dma_regparams)
                解决办法是先关闭全局中断，然后失能DMA，这样就不会立即触发TC中断，这时再清除TC标志即可
             */
             primask =
-                awlf_hw_disable_interrupt(); // 注意，在框架内所有的关闭硬件中断操作都必须使用awlf_hw_disable/enable_irq()，以避免一些错误
+                aw_hw_disable_interrupt(); // 注意，在框架内所有的关闭硬件中断操作都必须使用aw_hw_disable/enable_irq()，以避免一些错误
             __HAL_DMA_DISABLE(hdma);
             __HAL_DMA_DISABLE_IT(hdma, DMA_IT_TC);
-            awlf_hw_restore_interrupt(primask);
+            aw_hw_restore_interrupt(primask);
             // 擦HAL_UARTEx_ReceiveToIdle_DMA的屁股，该函数内会LOCK(hdma)并设置hdma为busy
             __HAL_UNLOCK(hdma);
             hdma->State = HAL_DMA_STATE_READY;

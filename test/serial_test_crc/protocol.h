@@ -5,9 +5,9 @@
 #ifndef TEST_PROTOCOL_H
 #define TEST_PROTOCOL_H
 
-#include "aw_core/awlf_def.h"
+#include "aw_def.h"
 #include "data_struct/ringbuffer.h"
-#include "component/driver/core/device.h"
+#include "device/core/device.h"
 
 #define TEST_HEADER_SZ    (sizeof(test_header_s))
 #define TEST_FMT_SZ       (sizeof(test_fmt_s))
@@ -19,7 +19,7 @@ typedef struct test_protocol*   test_protocol_t;
 typedef struct test_header*     test_header_t;
 typedef struct test_fmt*        test_fmt_t;
 
-typedef struct __awlf_packed test_header
+typedef struct __aw_packed test_header
 {
     uint8_t  sof;
     uint16_t datasz;
@@ -27,7 +27,7 @@ typedef struct __awlf_packed test_header
     uint8_t  crc8;          // 帧头校验
 } test_header_s;
 
-typedef struct __awlf_packed test_fmt
+typedef struct __aw_packed test_fmt
 {
     test_header_s header;
     uint16_t      cmd_id;
@@ -35,7 +35,7 @@ typedef struct __awlf_packed test_fmt
                               // （说实话这个方案相当不错，但是目前没有时间思考更安全的方案，后续改进，做一套适配于环形缓存区的方案）
 } test_fmt_s;
 
-typedef struct __awlf_packed test_packet
+typedef struct __aw_packed test_packet
 {
     test_fmt_s fmt;
     uint8_t    data[460];

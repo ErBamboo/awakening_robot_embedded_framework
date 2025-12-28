@@ -10,7 +10,7 @@
 #ifndef __AWLF_BSP_SERIAL_H__
 #define __AWLF_BSP_SERIAL_H__
 
-#include "component/driver/pal/pal_serial_dev.h"
+#include "device/peripheral/pal_serial_dev.h"
 #include "stm32f4xx_hal.h"
 
 #define USE_SERIAL_1
